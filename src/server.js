@@ -1,3 +1,3 @@
-import app from '../app.js';
+import app from './app';
 
-app.listen(process.env.SERVER_PORT, () => process.env.SERVER_ADDRESS)
+app.listen(process.env.SERVER_PORT, () => process.env.SERVER_ADDRESS);
