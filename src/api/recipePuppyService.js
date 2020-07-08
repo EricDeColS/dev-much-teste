@@ -22,14 +22,5 @@ export default async function recipes(i) {
         };
     }
 
-    const recipes  = res.data.results.map((recipe) => {
-        const ingredientArray = recipe.ingredients.split(',');
-        return {
-            title: recipe.title,
-            link: recipe.href,
-            ingredients: ingredientArray.sort(),
-            gif: ''
-        };
-    });
-    return recipes;
+return res;
 }
