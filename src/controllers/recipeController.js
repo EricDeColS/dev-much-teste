@@ -1,9 +1,15 @@
-import getGif from '../api/giphyAPI';
-import getRecipe from '../api/recipePuppyAPI';
+import getGif from '../api/giphyService';
+import getRecipe from '../api/recipePuppyService';
 
 export default async function recipeController(req, res) {
 
-    console.log(req.query);
+    const { i } = res.query;
 
-    return
+    const ingredients = i.split(',');
+
+    const recipes = await getRecipe(i);
+
+    const gif = await getGif(recipes.title)
+    
+    return res.status(200);
 }
