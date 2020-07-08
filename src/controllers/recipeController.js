@@ -6,19 +6,23 @@ export default async function recipeController(req, res) {
     const ingredients = req.query.i;
     if (ingredients.length === 0) {
         return res.status(400).send({
-            message: 'There`s nothing to be sniffed by puppies here, try adding ingredients or check for valid characters',
+            message: 'There\'s nothing to be sniffed by puppies here, try adding ingredients or check for valid characters',
         });
     }
     const ingredientsArray = ingredients.split(',');
-    // falta conferir quantidade de ingredientes.
-    
+    if (ingredientsArray.length > 3 ) {
+        return res.status(404).send({
+            message: 'Please use 3 main ingredients at max.'
+        });
+    }
+
     const recipesListed = {
         "keywords" : [...ingredientsArray],
         "recipes": []
     }
 
     const recievedRecipeArray = await getRecipe(ingredients);
-    const recipes = recievedRecipeArray.data.results.map(async r =>{
+    const recipes = recievedRecipeArray.data.results.map(async r => {
         const{title, ingredients, href} = r;
         
         const giphy = await getGif(r.title);
@@ -31,7 +35,7 @@ export default async function recipeController(req, res) {
             gif: image
         });
     });
-    Promise.all(recipes).then(()=>{
+    Promise.all(recipes).then(()=> {
         return res.status(200).send(recipesListed);
     })
 }
