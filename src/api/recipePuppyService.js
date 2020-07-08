@@ -6,7 +6,10 @@ const api = axios.create({
 
 export default async function recipes(i) {
     const res = await api.get(`?i=${i}`);
-    console.log(res.status)
+    
+    console.log("status: " + res.status);
+
+
     if(res.status !== 200) {
         return {
             error: 'It looks like the puppies are asleep, let`s wake them, try again later'
@@ -23,8 +26,9 @@ export default async function recipes(i) {
         const ingredientArray = recipe.ingredients.split(',');
         return {
             title: recipe.title,
-            href: recipe.href,
-            ingredients: ingredientArray.sort()
+            link: recipe.href,
+            ingredients: ingredientArray.sort(),
+            gif: ''
         };
     });
     return recipes;
