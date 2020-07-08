@@ -1,0 +1,29 @@
+{
+  "name": "dev-much-teste",
+  "version": "1.0.0",
+  "description": "Api que recebe ate 3 ingredientes e retorna lista de receitas com estes ingredientes.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "receita",
+    "ingredientes"
+  ],
+  "author": "Eric Sales",
+  "license": "MIT",
+  "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "@types/jest": "^26.0.4",
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
