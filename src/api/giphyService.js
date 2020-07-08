@@ -8,9 +8,9 @@ const api = axios.create({
 });
 
 export default async function getGif(recipe) {
-    const q = `search?api_key=${process.env.GIPHY_API_KEY}&q=${recipe}&limit=1`;
+    const query = `search?api_key=${process.env.GIPHY_API_KEY}&q=${recipe}&limit=1`;
 
-    const res = await api.get(q);
+    const res = await api.get(query);
     if (res.status !== 200) {
         return {
             error: 'Oh no! Our gifator is not gifing at the moment, try again later or call out support.'
@@ -19,7 +19,7 @@ export default async function getGif(recipe) {
 
     if (!res.data.data)
         return {
-            error: 'Wow, your search doesn`t have a gif yet, did you just invented this?'
+            error: 'Wow, your search doesn`t have a gif yet, did you just invented this dish?'
         };
     
     return res.data.data[0].url;

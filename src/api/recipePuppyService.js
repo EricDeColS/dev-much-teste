@@ -20,11 +20,11 @@ export default async function recipes(i) {
     }
 
     const recipes  = res.data.results.map((recipe) => {
-        const i = recipe.ingredients.split(',');
+        const igredient = recipe.ingredients.split(',');
         return {
             title: recipe.title,
             href: recipe.href,
-            ingredients: i.sort()
+            ingredients: ingredient.sort()
         };
     });
     return recipes;
