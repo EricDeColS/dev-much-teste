@@ -29,10 +29,7 @@ export default async function recipeController(req, res) {
     const cleanTitle = title.replace(/[\n\t]/g, " ").replace("&amp;", "&");
 
     let orderedIngredients = ingredients.split(",");
-    orderedIngredients[0] = " " + orderedIngredients[0];
-    for (var index in orderedIngredients) {
-      orderedIngredients[index] = orderedIngredients[index].trim();
-    }
+    orderedIngredients = orderedIngredients.map((item) => item.trim()).sort();
 
     const giphy = await getGif(title);
     const image = giphy.data.data[0].images.downsized_large.url;
