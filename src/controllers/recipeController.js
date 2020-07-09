@@ -4,14 +4,16 @@ import getRecipe from '../api/recipePuppyService';
 export default async function recipeController(req, res) {
 
     const ingredients = req.query.i;
+    const ingredientsArray = ingredients.split(',').sort();
+    
     if (ingredients.length === 0) {
         return res.status(400).send({
             message: 'There\'s nothing to be sniffed by puppies here, try adding ingredients or check for valid characters',
         });
     }
-    const ingredientsArray = ingredients.split(',');
+    
     if (ingredientsArray.length > 3 ) {
-        return res.status(404).send({
+        return res.status(400).send({
             message: 'Please use 3 main ingredients at max.'
         });
     }
@@ -20,14 +22,13 @@ export default async function recipeController(req, res) {
         "keywords" : [...ingredientsArray],
         "recipes": []
     }
-
     const recievedRecipeArray = await getRecipe(ingredients);
     const recipes = recievedRecipeArray.data.results.map(async r => {
         const{title, ingredients, href} = r;
-        
-        const giphy = await getGif(r.title);
+
+        const giphy = await getGif(title);
         const image = giphy.data.data[0].images.downsized_large.url;
-        
+          
         recipesListed.recipes.push({
             title: title,
             ingredients: ingredients,
@@ -35,7 +36,11 @@ export default async function recipeController(req, res) {
             gif: image
         });
     });
+
     Promise.all(recipes).then(()=> {
         return res.status(200).send(recipesListed);
-    })
+    }).catch(err => {
+        throw new Error(err);
+    });
+
 }
