@@ -1,23 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-    baseURL:'http://www.recipepuppy.com/api/'
+  baseURL: "http://www.recipepuppy.com/api/",
 });
 
 export default async function recipes(i) {
-    const res = await api.get(`?i=${i}`);
-    
-    if(res.status !== 200) {
-        return {
-            error: 'It looks like the puppies are asleep, let`s wake them, try again later'
-        };
-    }
+  const res = await api.get(`?i=${i}`);
 
-    if(res.data.results.length < 1) {
-        return {
-            error: 'The puppies sniffed for goodies but nothing was found! It looks like you have something never sniffed before '
-        };
-    }
+  if (res.status !== 200) {
+    return {
+      error:
+        "It looks like the puppies are asleep, let`s wake them, try again later",
+    };
+  }
 
-return res;
+  if (res.data.results.length < 1) {
+    return {
+      error:
+        "The puppies sniffed for goodies but nothing was found! It looks like you have something never sniffed before ",
+    };
+  }
+
+  return res;
 }
