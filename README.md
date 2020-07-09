@@ -19,15 +19,20 @@ sudo docker build -t ericsales-api
 sudo docker run -it -p 3000:3000 ericsales-api
 ```
 
+## Rodando no __docker-compose__:
+Requer o docker-compose, digite o comando a seguir no diretorio do projeto:
+```
+docker-compose up
+```
 ## NPM
 ```
 npm install
-npm run test
+npm start
 ```
 ## YARN
 ```
 yarn install
-yarn run test
+yarn start
 ```
 # Exemplo de como utilizar a API:
 
@@ -44,36 +49,59 @@ http://127.0.0.1:3000/recipes/?i=banana,apple
 A resposta da requisição segue a seguinte estrutura:
 ```
 {
+    {
     "keywords": [
         "apple",
         "banana"
     ],
     "recipes": [
         {
-            "title": "Apple Stacks",
-            "ingredients": "almond butter, apple, banana, carrot, raisins",
-            "link": "http://www.recipezaar.com/Apple-Stacks-190858",
-            "gif": "https://media0.giphy.com/media/QrDHLs1py45IA/giphy.gif?cid=142993c08c94f20cdf78ef04e1051aa381080866362db961&rid=giphy.gif"
+            "title": "Groovy Green Smoothie",
+            "ingredients": [
+                "apple",
+                "banana",
+                "grapes",
+                "spinach"
+            ],
+            "link": "http://allrecipes.com/Recipe/Groovy-Green-Smoothie/Detail.aspx",
+            "gif": "https://media0.giphy.com/media/1kMBl3iwHj8Iw/giphy.gif?cid=142993c05c0f91138a1e37097043a4ef4cf2ac242b6c7972&rid=giphy.gif"
         },
         {
-            "title": "\nPineapple &amp; Fruit Salad Recipe\n\n",
-            "ingredients": "pineapple, vanilla pudding mix, banana, apple",
-            "link": "http://cookeatshare.com/recipes/pineapple-fruit-salad-49402",
-            "gif": "https://media3.giphy.com/media/YMShTviqV7fG4iszxJ/giphy.gif?cid=142993c0fad6e85c42ff715a30457eb512f333c9e0a722ea&rid=giphy.gif"
+            "title": "Sunday Best Fruit Salad",
+            "ingredients": [
+                "apple",
+                "banana",
+                "kiwi",
+                "strawberries"
+            ],
+            "link": "http://allrecipes.com/Recipe/Sunday-Best-Fruit-Salad/Detail.aspx",
+            "gif": "https://media0.giphy.com/media/xUA7aUxCScDJLTwemA/giphy.gif?cid=142993c0592645d8a67a067e4a6f81ccd3c0b19139ef2966&rid=giphy.gif"
         },
+        {
+            "title": " Pineapple & Fruit Salad Recipe  ",
+            "ingredients": [
+                "apple",
+                "banana",
+                "pineapple",
+                "vanillapuddingmix"
+            ],
+            "link": "http://cookeatshare.com/recipes/pineapple-fruit-salad-49402",
+            "gif": "https://media0.giphy.com/media/YMShTviqV7fG4iszxJ/giphy.gif?cid=142993c002c98f713f4782f5381ef1794ca0957d42c26598&rid=giphy.gif"
+        }
     ]
 }
 ```
 Para obter uma resposta válida é necessário que haja no mínimo 1 ingrediente no endpoint e no máximo 3. Qualquer utilização fora destes limites retornará uma mensagem de erro.
+
 # Testes
 
 Os testes estão no diretório ```__testes__``` na raiz do projeto. Para rodar os testes execute:
-NPM
+## NPM
 ```
 npm install
 npm run test
 ```
-YARN
+## YARN
 ```
 yarn install
 yarn run test
