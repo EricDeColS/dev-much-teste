@@ -19,28 +19,30 @@ export default async function recipeController(req, res) {
     }
 
     const recipesListed = {
-        "keywords" : [...ingredientsArray],
+        "keywords" : ingredientsArray,
         "recipes": []
     }
     const recievedRecipeArray = await getRecipe(ingredients);
     const recipes = recievedRecipeArray.data.results.map(async r => {
         const{title, ingredients, href} = r;
-
+        
+        const cleanTitle = title.replace(/[\n\t]/g,' ').replace('&amp;','&');
+        
+        const orderedIngredients = ingredients.replace(/ /g,'').split(',').sort();
+        
         const giphy = await getGif(title);
         const image = giphy.data.data[0].images.downsized_large.url;
           
         recipesListed.recipes.push({
-            title: title,
-            ingredients: ingredients,
+            title: cleanTitle,
+            ingredients: orderedIngredients,
             link: href,
             gif: image
         });
     });
-
     Promise.all(recipes).then(()=> {
         return res.status(200).send(recipesListed);
     }).catch(err => {
         throw new Error(err);
     });
-
 }
