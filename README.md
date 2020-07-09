@@ -10,7 +10,7 @@ Exemplo de inserção da chave de acesso:
 GIPHY_API_KEY=127836187246exemplof987123b
 ```
 
-## Rodando no __docker__:
+### Rodando no __docker__:
 Na pasta do projeto digite:
 ```
 sudo docker build -t ericsales-api
@@ -19,17 +19,17 @@ sudo docker build -t ericsales-api
 sudo docker run -it -p 3000:3000 ericsales-api
 ```
 
-## Rodando no __docker-compose__:
+### Rodando no __docker-compose__:
 Requer o docker-compose, digite o comando a seguir no diretorio do projeto:
 ```
 docker-compose up
 ```
-## NPM
+### Rodando com NPM
 ```
 npm install
 npm start
 ```
-## YARN
+### Rodando com YARN
 ```
 yarn install
 yarn start
@@ -96,12 +96,12 @@ Para obter uma resposta válida é necessário que haja no mínimo 1 ingrediente
 # Testes
 
 Os testes estão no diretório ```__testes__``` na raiz do projeto. Para rodar os testes execute:
-## NPM
+### NPM
 ```
 npm install
 npm run test
 ```
-## YARN
+### YARN
 ```
 yarn install
 yarn run test
