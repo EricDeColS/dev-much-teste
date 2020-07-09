@@ -1,8 +1,8 @@
-# dev-much-teste
-## DeliveryMuch Tech Challenge
+## dev-much-teste
+# DeliveryMuch Tech Challenge
 Esta API foi um desafio proposto pelo time de recrutamento da DeliveryMuch. Sua proposta é, ao consumir duas API (RecipePuppy e Giphy) e assim retornar titulo de receitas, com lista de ingredientes e um link com um gif da receita.
 
-# Instruções para rodar
+## Instruções para rodar
 Primeiramente, após fazer o download ou clonar o projeto, é necessario adicionar no arquivo .env que está na raiz do projeto, logo após "GIPHY_API_KEY=", uma chave para a API do Giphy. Caso não possua, uma chave poderá ser obtida clicando [aqui](https://developers.giphy.com/).
 
 Exemplo de inserção da chave de acesso:
@@ -10,7 +10,7 @@ Exemplo de inserção da chave de acesso:
 GIPHY_API_KEY=127836187246exemplof987123b
 ```
 
-### Rodando no __docker__:
+### Rodando no __docker__
 Na pasta do projeto digite:
 ```
 sudo docker build -t ericsales-api
@@ -19,7 +19,7 @@ sudo docker build -t ericsales-api
 sudo docker run -it -p 3000:3000 ericsales-api
 ```
 
-### Rodando no __docker-compose__:
+### Rodando no __docker-compose__
 Requer o docker-compose, digite o comando a seguir no diretorio do projeto:
 ```
 docker-compose up
